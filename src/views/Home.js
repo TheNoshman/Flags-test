@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import Widget from '../components/Widget';
 
 const Home = () => {
-  const history = useHistory();
   const [widgetList, setwidgetList] = useState([]);
 
   // API call

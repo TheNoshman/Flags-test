@@ -5,9 +5,9 @@ export default function Details() {
   const history = useHistory();
   const location = useLocation();
   const widget = location.state;
-  console.log('widg', widget.id);
 
-  const [widgetDetail, setWidgetDetail] = useState([]);
+  const [loading, setloading] = useState(true);
+  const [widgetDetail, setWidgetDetail] = useState({});
 
   // API call
   useEffect(() => {
@@ -19,11 +19,11 @@ export default function Details() {
               result.status <= 400 ? result : Promise.reject(result)
             )
             .then((result) => result.json())
-            .then((result) => console.log('detail = ', result))
             .catch((err) => {
               console.log(`get widget detail ERROR - ${err.message}`);
             })
         );
+        setloading(false);
       } catch (e) {
         console.log('Get widget detail API error = ', e);
       }
@@ -32,15 +32,34 @@ export default function Details() {
 
   return (
     <div>
-      <h1>All widgets</h1>
-      <hr />
-      {/* {widgetDetail.length ? (
-        <h1>done</h1>
+      {!loading ? (
+        <div className='details-container'>
+          <h1>{widgetDetail.name}</h1>
+          <img className='icon' src={widgetDetail.image} alt='widget icon' />
+          <div className='detail-col'>
+            <div className='detail-col-1'>
+              <h5>Property</h5>
+              <p>ID</p>
+              <p>Min</p>
+              <p>Max</p>
+              <p>Current</p>
+              <p>History</p>
+            </div>
+            <div className='detail-col-2'>
+              <h5>Value</h5>
+              <p>{widgetDetail.id}</p>
+              <p>{widgetDetail.min}</p>
+              <p>{widgetDetail.max}</p>
+              <p>{widgetDetail.current}</p>
+              <p>{widgetDetail.history[0]}</p>
+            </div>
+          </div>
+        </div>
       ) : (
         <div>
           <h3>Loading...</h3>
         </div>
-      )} */}
+      )}
       <p onClick={() => history.push('/')}>back</p>
     </div>
   );

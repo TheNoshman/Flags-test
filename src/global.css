@@ -18,7 +18,6 @@ body {
 }
 * {
   box-sizing: border-box;
-  border: solid red 1px;
 }
 
 .icon {
@@ -33,4 +32,18 @@ body {
   display: flex;
   justify-content: left;
   align-items: center;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.detail-col {
+  display: flex;
+  flex-direction: row;
+}
+
+.detail-col-1 {
 }

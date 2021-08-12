@@ -3,8 +3,6 @@ import { useHistory } from 'react-router-dom';
 
 export default function Widget({ widget }) {
   const history = useHistory();
-  console.log('widg', widget);
-
   return (
     <div
       className='widget'
