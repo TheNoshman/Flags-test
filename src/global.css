@@ -1,0 +1,21 @@
+html {
+    font-size: 2px;
+    font-family: sans-serif;
+    color: #444;
+    background-color: #eee;
+}
+body {
+    font-size: 8rem;
+    margin: 0;
+    padding: 10rem 0;
+}
+@media screen {
+    #root {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+* {
+    box-sizing: border-box;
+}
