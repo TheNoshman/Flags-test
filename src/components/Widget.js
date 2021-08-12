@@ -6,7 +6,15 @@ export default function Widget({ widget }) {
   console.log('widg', widget);
 
   return (
-    <div className='widget' onClick={() => history.push('/details')}>
+    <div
+      className='widget'
+      onClick={() =>
+        history.push({
+          pathname: '/details',
+          state: widget,
+        })
+      }
+    >
       <img className='icon' src={widget.image} alt='widget icon' />
       <h1>{widget.name}</h1>
     </div>
