@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Widget from '../components/Widget';
 
 const Home = () => {
   const history = useHistory();
-
   const [widgetList, setwidgetList] = useState([]);
 
   // API call
   useEffect(() => {
     (async () => {
-      let widgetResult;
       try {
-        // widgetList = await getCompanyKeyAPI();
-        setwidgetList(widgetResult);
+        setwidgetList(
+          await fetch(`api/widgets`)
+            .then((result) =>
+              result.status <= 400 ? result : Promise.reject(result)
+            )
+            .then((result) => result.json())
+            .catch((err) => {
+              console.log(`get widget list ERROR - ${err.message}`);
+            })
+        );
       } catch (e) {
         console.log('Get widget list API error = ', e);
       }
@@ -23,6 +30,15 @@ const Home = () => {
     <div>
       <h1>All widgets</h1>
       <hr />
+      {widgetList.length ? (
+        widgetList.map((widget, i) => {
+          return <Widget widget={widget} key={widget.id} />;
+        })
+      ) : (
+        <div>
+          <h3>Loading...</h3>
+        </div>
+      )}
     </div>
   );
 };

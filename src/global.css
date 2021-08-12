@@ -1,21 +1,36 @@
 html {
-    font-size: 2px;
-    font-family: sans-serif;
-    color: #444;
-    background-color: #eee;
+  font-size: 2px;
+  font-family: sans-serif;
+  color: #444;
+  background-color: #eee;
 }
 body {
-    font-size: 8rem;
-    margin: 0;
-    padding: 10rem 0;
+  font-size: 8rem;
+  margin: 0;
+  padding: 10rem 0;
 }
 @media screen {
-    #root {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  #root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  border: solid red 1px;
+}
+
+.icon {
+  height: 30px;
+  margin-right: 10rem;
+  margin-left: 10rem;
+}
+
+.widget {
+  width: 400rem;
+  height: 30rem;
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
