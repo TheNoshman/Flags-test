@@ -18,12 +18,17 @@ body {
 }
 * {
   box-sizing: border-box;
+  /* border: solid red 1px; */
 }
 
 .icon {
   height: 30px;
   margin-right: 10rem;
   margin-left: 10rem;
+}
+
+.icon-details {
+  height: 50px;
 }
 
 .widget {
@@ -34,10 +39,23 @@ body {
   align-items: center;
 }
 
+.widget:hover {
+  background-color: lightgrey;
+  border: solid blue 1px;
+  cursor: pointer;
+}
+
+.widget:focus {
+  background-color: lightgrey;
+}
+
 .details-container {
   display: flex;
   flex-direction: column;
   flex: 1;
+  align-items: flex-start;
+  background-color: white;
+  padding: 5rem;
 }
 
 .detail-col {
@@ -46,4 +64,5 @@ body {
 }
 
 .detail-col-1 {
+  margin: 2rem;
 }

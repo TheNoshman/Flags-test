@@ -25,17 +25,24 @@ export default function Details() {
         );
         setloading(false);
       } catch (e) {
+        alert('API error - please return to the widget selection screen');
         console.log('Get widget detail API error = ', e);
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div>
       {!loading ? (
         <div className='details-container'>
-          <h1>{widgetDetail.name}</h1>
-          <img className='icon' src={widgetDetail.image} alt='widget icon' />
+          <h1 className='details-title'>{widgetDetail.name}</h1>
+          <img
+            className='icon-details'
+            src={widgetDetail.image}
+            alt='widget icon'
+          />
+
           <div className='detail-col'>
             <div className='detail-col-1'>
               <h5>Property</h5>
@@ -45,22 +52,22 @@ export default function Details() {
               <p>Current</p>
               <p>History</p>
             </div>
-            <div className='detail-col-2'>
+            <div className='detail-col-1'>
               <h5>Value</h5>
               <p>{widgetDetail.id}</p>
               <p>{widgetDetail.min}</p>
               <p>{widgetDetail.max}</p>
               <p>{widgetDetail.current}</p>
-              <p>{widgetDetail.history[0]}</p>
+              {/* <p>{widgetDetail.history[0]}</p> */}
             </div>
           </div>
+          <button onClick={() => history.push('/')}>back</button>
         </div>
       ) : (
         <div>
           <h3>Loading...</h3>
         </div>
       )}
-      <p onClick={() => history.push('/')}>back</p>
     </div>
   );
 }
